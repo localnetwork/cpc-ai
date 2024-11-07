@@ -13,6 +13,12 @@ app.options("*", cors());
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to Mobile Legends",
+  });
+});
+
 // Path to the routes directory
 const routesPath = path.join(__dirname, "./src/routes");
 
