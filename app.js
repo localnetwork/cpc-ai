@@ -19,23 +19,22 @@ app.get("/", (req, res) => {
   });
 });
 
-const versions = process.env.VERSIONS.split(",");
+// const versions = process.env.VERSIONS.split(",");
 
-// Path to the routes directory
+// // Path to the routes directory
 
-versions.forEach((version) => {
-  console.log("version ");
-  // const routesPath = path.join(__dirname, `./src/${version}/routes`);
-  // console.log("version", version);
-  // if (fs.existsSync(routesPath)) {
-  //   fs.readdirSync(routesPath).forEach((file) => {
-  //     const route = require(path.join(routesPath, file));
-  //     app.use(`/api/${version}`, route);
-  //   });
-  // } else {
-  //   console.warn(`Routes path not found: ${routesPath}`);
-  // }
-});
+// versions.forEach((version) => {
+//   // const routesPath = path.join(__dirname, `./src/${version}/routes`);
+//   // console.log("version", version);
+//   // if (fs.existsSync(routesPath)) {
+//   //   fs.readdirSync(routesPath).forEach((file) => {
+//   //     const route = require(path.join(routesPath, file));
+//   //     app.use(`/api/${version}`, route);
+//   //   });
+//   // } else {
+//   //   console.warn(`Routes path not found: ${routesPath}`);
+//   // }
+// });
 
 // Handle other errors (optional)
 app.use((err, req, res, next) => {
