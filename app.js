@@ -25,14 +25,14 @@ const versions = process.env.VERSIONS.split(",");
 
 versions.forEach((version) => {
   const routesPath = path.join(__dirname, `./src/routes/${version}`);
-
-  // Read all files in the routes directory
-  fs.readdirSync(routesPath).forEach((file) => {
-    const route = require(path.join(routesPath, file));
-
-    // Assuming each route file exports a router and is used under its own endpoint
-    app.use(`/api/${version}`, route);
-  });
+  if (fs.existsSync(routesPath)) {
+    fs.readdirSync(routesPath).forEach((file) => {
+      const route = require(path.join(routesPath, file));
+      app.use(`/api/${version}`, route);
+    });
+  } else {
+    console.warn(`Routes path not found: ${routesPath}`);
+  }
 });
 
 // Handle other errors (optional)
