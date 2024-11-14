@@ -25,6 +25,7 @@ const versions = process.env.VERSIONS.split(",");
 
 versions.forEach((version) => {
   const routesPath = path.join(__dirname, `./src/routes/${version}`);
+  console.log("version", version);
   if (fs.existsSync(routesPath)) {
     fs.readdirSync(routesPath).forEach((file) => {
       const route = require(path.join(routesPath, file));
