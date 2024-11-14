@@ -3,7 +3,7 @@ const router = express.Router();
 
 require("dotenv").config();
 
-const { sendChat } = require(`../../controllers/v1/chatController`);
+const { sendChat } = require(`../controllers/chatController`);
 
 router.post("/chat", sendChat);
 
