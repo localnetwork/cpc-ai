@@ -20,13 +20,16 @@ app.get("/", (req, res) => {
 });
 
 // Path to the routes directory
-const routesPath = path.join(__dirname, "./src/routes");
+const routesPath = path.join(
+  __dirname,
+  `./src/routes/${process.env.NODE_API_VERSION}`
+);
 
 // Read all files in the routes directory
 fs.readdirSync(routesPath).forEach((file) => {
   const route = require(path.join(routesPath, file));
   // Assuming each route file exports a router and is used under its own endpoint
-  app.use("/api", route);
+  app.use(`/api/${process.env.NODE_API_VERSION}`, route);
 });
 
 // Handle 404 - Route not found
